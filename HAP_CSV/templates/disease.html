@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="disease-detail">
+    <h2>{{ disease.title }}</h2>
+    <p><strong>Summary:</strong> {{ disease.summary }}</p> <!-- short description -->
+    <p><strong>Overview:</strong> {{ disease.overview }}</p>
+    <h4>Symptoms</h4>
+    <p>{{ disease.symptoms }}</p>
+    <h4>Prevention</h4>
+    <p>{{ disease.prevention }}</p>
+    {% if disease.image %}
+    <img src="{{ url_for('uploaded_file', filename=disease.image) }}" alt="{{ disease.title }}">
+    {% endif %}
+    <a class="back-btn" href="{{ url_for('index') }}" style="font-family: cursive;">Back to Home</a>
+</div>
+{% endblock %}

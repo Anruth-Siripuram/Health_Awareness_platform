@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Health Awareness</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Health Awareness Platform</h1>
+            <nav>
+                {% if session.get("logged_in") %}
+                <a href="{{ url_for('logout') }}">Logout</a>
+                {% endif %}
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('host_panel') }}">Host Panel</a>
+                <form action="{{ url_for('search') }}" method="get">
+                    <input type="text" name="q" style="font-family: cursive;" placeholder="Search diseases...">
+                    <button type="submit" style="font-family: cursive;">Search</button>
+                </form>
+            </nav>
+        </header>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+        <footer>
+            <p>&copy; 2025 Health Awareness Project</p>
+        </footer>
+    </body>
+</html>

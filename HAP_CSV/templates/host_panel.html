@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Host Panel</h2>
+
+<!-- Add new disease -->
+<form method="post" enctype="multipart/form-data" style="margin-bottom:20px;">
+  <input name="title" placeholder="Title" required style="font-family: cursive;">
+  <input name="summary" placeholder="Short summary (1 line)" required style="font-family: cursive;">
+  <textarea name="overview" placeholder="Overview (full)" style="font-family: cursive;"></textarea>
+  <textarea name="symptoms" placeholder="Symptoms" style="font-family: cursive;"></textarea>
+  <textarea name="prevention" placeholder="Prevention" style="font-family: cursive;"></textarea>
+  <label>Image (optional) <input type="file" name="image" accept="image/*"></label>
+  <button type="submit" style="font-family: cursive; padding:6px 12px; background:#28a745; color:white; border:none; border-radius:4px; cursor:pointer;">Add Disease</button>
+</form>
+
+<hr>
+
+<h3>Existing entries</h3>
+<table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse;">
+  <thead style="background:#f2f2f2;">
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Image</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for d in diseases %}
+    <tr>
+      <td>{{ d.id }}</td>
+      <td>{{ d.title }}</td>
+      <td>
+        {% if d.image %}
+          <img src="{{ url_for('uploaded_file', filename=d.image) }}" alt="{{ d.title }}" style="width:80px;height:50px;object-fit:cover;">
+        {% endif %}
+      </td>
+      <td>
+        <a href="{{ url_for('edit_disease', d_id=d.id) }}">
+          <button type="button" style="font-family: cursive; background:#007bff; color:white; padding:6px 12px; border:none; border-radius:4px; cursor:pointer; margin-right:5px;">
+            Edit
+          </button>
+        </a>
+        <a href="{{ url_for('delete_disease', d_id=d.id) }}">
+          <button type="button" style="font-family: cursive; background:#dc3545; color:white; padding:6px 12px; border:none; border-radius:4px; cursor:pointer; margin-right:5px;">
+            Delete
+          </button>
+        </a>
+        <a href="{{ url_for('disease', d_id=d.id) }}">
+          <button type="button" style="font-family: cursive; background:#17a2b8; color:white; padding:6px 12px; border:none; border-radius:4px; cursor:pointer;">
+            View
+          </button>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

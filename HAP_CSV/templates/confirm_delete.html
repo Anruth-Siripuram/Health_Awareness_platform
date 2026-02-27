@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Confirm Delete</h2>
+<p>Are you sure you want to delete <strong>{{ disease.title }}</strong> (ID: {{ disease.id }})?</p>
+<form method="post">
+  <button type="submit" style="font-family: cursive;">Yes — Delete</button>
+  <a href="{{ url_for('host_panel') }}" style="font-family: cursive;">Cancel</a>
+</form>
+{% endblock %}

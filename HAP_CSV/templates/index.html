@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="parallax hero">
+    <h2>Stay Informed. Stay Healthy.</h2>
+</section>
+<style>
+    h2{ 
+        color:blueviolet 
+    } 
+    .bmi_result{ 
+        color:crimson; 
+        font-weight: bold; 
+    }   
+</style>
+<!-- Disease Cards -->
+<div class="disease-list">
+    {% for disease in diseases %}
+    <div class="card">
+        {% if disease.image %}
+        <img src="{{ url_for('uploaded_file', filename=disease.image) }}" alt="{{ disease.title }}">
+        {% endif %}
+        <h3>{{ disease.title }}</h3>
+        <p>{{ disease.summary }}</p> <!-- Short description -->
+        <a href="{{ url_for('disease', d_id=disease.id) }}">Read More</a>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- BMI Calculator Section -->
+<section class="parallax mid">
+    <h2>BMI Calculator</h2>
+    <div id="bmi-tool">
+        <input type="number" id="weight" style="font-family: cursive;" placeholder="Weight (kg)">
+        <input type="number" id="height" style="font-family: cursive;" placeholder="Height (cm)">
+        <button onclick="calcBMI()" style="font-family: cursive;">Calculate</button>
+        <p class="bmi_result" id="bmi-result"></p>
+    </div>
+</section>
+
+{% endblock %}

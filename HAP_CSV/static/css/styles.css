@@ -1,0 +1,258 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: cursive, Arial, sans-serif;
+    background: linear-gradient(-45deg,white,lightpink,skyblue,lightpink,white);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #f83600, #f9d423);
+    padding: 20px 30px; /* initial padding */
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+header.shrink {
+    padding: 8px 20px; /* smaller padding on scroll */
+    font-size: 0.9em;
+}
+
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    margin-left: 15px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+header nav a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Parallax Sections */
+.parallax {
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 2em;
+    text-align: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero {
+    background-image: url('../images/placeholder.jpg');
+}
+
+.mid {
+    background-image: url('../images/placeholder2.jpg');
+}
+
+/* Disease Cards */
+.disease-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 40px;
+}
+
+.card {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #fff;
+}
+
+.card:hover {
+    transform: translateY(-7px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+
+.card h3 {
+    margin: 0 0 10px 0;
+}
+
+.card a {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 8px 18px;
+    background: #ff512f;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.card a:hover {
+    background: #dd2476;
+}
+
+/* Disease Detail Page */
+.disease-detail {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.disease-detail img {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 18px;
+    background: #ff512f;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #dd2476;
+}
+
+/* Host Panel & Login Forms */
+form {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="file"],
+form textarea {
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    width: 100%;
+    resize: vertical;
+}
+
+form button {
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    background: #ff512f;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+form button:hover {
+    background: #dd2476;
+}
+
+/* BMI Calculator */
+#bmi-tool {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 320px;
+    margin: 20px auto;
+    background: rgba(255,255,255,0.95);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#bmi-tool input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+}
+
+#bmi-tool button {
+    padding: 10px;
+    border-radius: 12px;
+    background: #ff512f;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#bmi-tool button:hover {
+    background: #dd2476;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .parallax {
+        font-size: 1.5em;
+        min-height: 200px;
+    }
+}

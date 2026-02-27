@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Disease — {{ disease.title }}</h2>
+
+<form method="post" enctype="multipart/form-data">
+  <label>Title <input name="title" value="{{ disease.title }}" required></label>
+  <label>Summary <input name="summary" value="{{ disease.summary }}"></label>
+  <label>Overview <textarea name="overview">{{ disease.overview }}</textarea></label>
+  <label>Symptoms <textarea name="symptoms">{{ disease.symptoms }}</textarea></label>
+  <label>Prevention <textarea name="prevention">{{ disease.prevention }}</textarea></label>
+  <p>Current image:
+    {% if disease.image %}
+      <img src="{{ url_for('uploaded_file', filename=disease.image) }}" alt="" style="width:120px; height:80px; object-fit:cover;">
+    {% else %}
+      (none)
+    {% endif %}
+  </p>
+  <label>Replace image <input type="file" name="image" accept="image/*"></label>
+  <button type="submit" style="font-family: cursive;">Save changes</button>
+  <a href="{{ url_for('host_panel') }}" style="font-family: cursive;">Cancel</a>
+</form>
+{% endblock %}
